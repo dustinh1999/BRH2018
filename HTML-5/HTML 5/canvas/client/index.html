@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta content="stuff, to, help, search, engines, not" name="keywords">
+        <meta content="What this page is about." name="description">
+        <meta content="Display Webcam Stream" name="title">
+        <link rel="stylesheet" type="text/css" href="css/minty.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <title>Display Webcam Stream</title>
+        <style>
+            .container {
+                margin: 0px auto;
+                width: 100%;
+                height: 480px;
+            }
+
+            #progress {
+                position: relative;
+                width: 200px;
+                height: 50px;
+                top: 100px;
+                left: 640px;
+            }
+
+            .col-lg-4 {
+                width: 640px;
+                height: 480px;
+                padding:5px;
+            }
+            body {
+                background-image: url("pictures/background.jpg");
+            }
+
+            .dotted {border-style: dotted;}
+            @keyframes FadeIn { 
+          0% {
+            opacity: 0;
+            transform: scale(.1);
+          }
+
+          85% {
+            opacity: 1;
+            transform: scale(1.05);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        .container {
+          animation: FadeIn .5s linear;
+          animation-fill-mode: both;
+        }
+
+        </style>
+        <script type="text/javascript">
+            
+             $(function () {
+              var timerId = 0;
+              var ctr=0;
+              var max=10;
+              
+              timerId = setInterval(function () {
+                // interval function
+                ctr++;
+                $('.progress-bar').attr("style","width:" + ctr*max + "%");
+                
+                // max reached?
+                if (ctr==max){
+                  clearInterval(timerId);
+                }
+              }, 1000);
+              });
+           
+
+
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row" style="padding-bottom: 30px">
+                <div class="col-lg-12" >
+                    <div class="page-header fadein" >
+                        <h1 align="center" style="padding: 25px; font-weight: bold">MemeGame</h1>
+                    </div>
+                    <div class="row" style="background-color: rgb(127, 255, 212, 0.3)" >
+                        <div class="col-lg-5">
+                            <div class="bs-component">
+                            <h2 id="memes"  align="center">Memes</h2>
+                                <p align="center">
+                                    <img style="width:400px; height: 300px" src="monkey.jpg">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="bs-component" align="center">
+                            <h2 id="point_comparison"  align="center">Video</h2>
+                                <video autoplay="" id="sourcevid" src="blob:null/282f8e9e-4a4f-4a71-be3f-f1fbf3041a2e" style="width:400px; height: 300px;"></video>
+                                <canvas id="output"></canvas>
+                                <div id="log"></div>
+                                <script type="text/javascript" src="js/transmissor.js"></script>
+                            </div>
+                        </div>
+                                <div class="col-lg-2 w3-animate-opacity">
+                                    <h4 id="video" align="center">Point Comparison</h4>
+                                    <div class="bs-component dotted" align="center" style="margin: 4px">
+                                        <div align="left" style="padding-left: 5px">
+                                        <p>SSM: </p>
+                                        <p>Points: </p>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="col-lg-12 w3-animate-opacity">
+                            <div class="bs-component">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="padding: 10px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    </body>
